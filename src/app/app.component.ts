@@ -5,7 +5,10 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: `<router-outlet />`
+  template: `
+  <router-outlet />
+  <p>teste</p>
+  `
 })
 export class AppComponent {
   title = 'curso-angular-lista-de-tarefas';
