@@ -6,6 +6,8 @@
   @if (addItem() == true) {
   <button class="btn btn-primary" (click)="addItem.set(false)">Crie uma lista de tarefas</button>
   } @else {
-    <app-input-add-item />
+    <app-input-add-item (outPutAddListItems)="getInputAndAddItem($event)" />
   }
 </div>
+
+{{ getListItems | json }} <!-- só pra fazer debug -->

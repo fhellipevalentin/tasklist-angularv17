@@ -15,7 +15,7 @@ export class InputAddItemComponent {
 
   @ViewChild("inputText") public inputText!: ElementRef;
 
-  @Output() public outPutListItems = new EventEmitter<IListItems>()
+  @Output() public outPutAddListItems = new EventEmitter<IListItems>()
   public focusAndAddItem(value: string) {
     if (value) {
       this.#cdr.detectChanges
@@ -25,7 +25,7 @@ export class InputAddItemComponent {
       const timesTamp = currentDate.getTime();
       const id = `ID ${timesTamp}`; // isso aqui é só pra criar um id qualquer
 
-      this.outPutListItems.emit({
+      this.outPutAddListItems.emit({
         id,
         checked: false,
         value
