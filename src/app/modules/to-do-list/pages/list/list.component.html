@@ -3,9 +3,14 @@
   alt="Sua Lista está vazia- imagem ilustrativa"
   loading="eager">
 
-  @if (addItem() == true) {
-  <button class="btn btn-primary" (click)="addItem.set(false)">Crie uma lista de tarefas</button>
-  } @else {
-    <app-input-add-item (outPutAddListItems)="getInputAndAddItem($event)" />
-  }
+  @if(addItem()){
+    <button class="btn btn-primary" (click)="addItem.set(false)">
+      Crie uma lista de tarefas
+    </button>
+    } @else {
+    <app-input-add-item
+      [inputListItems]="getListItems()"
+      (outputAddListItem)="getInputAndAddItem($event)"
+    />
+    }
 </div>

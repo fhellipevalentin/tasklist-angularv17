@@ -16,12 +16,13 @@ export class ListComponent {
   public getListItems = this.#setListItems.asReadonly();
 
   #parseItems() {
-    return JSON.parse(localStorage.getItem('@mylist') || '[]');
+    return JSON.parse(localStorage.getItem('@my-list') || '[]');
   }
 
-  public getInputAndAddItem(value: IListItems ) {
+  public getInputAndAddItem(value: IListItems) {
     localStorage.setItem(
-      '@my-list', JSON.stringify([...this.#setListItems(), value])
+      '@my-list',
+      JSON.stringify([...this.#setListItems(), value])
     );
 
     return this.#setListItems.set(this.#parseItems());

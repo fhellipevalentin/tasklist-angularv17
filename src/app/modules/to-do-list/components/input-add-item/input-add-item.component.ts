@@ -1,35 +1,39 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Output, ViewChild, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
 
 //Interfaces
 import { IListItems } from '../../interface/IListItemsInterface';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-input-add-item',
   standalone: true,
-  imports: [],
+  imports: [JsonPipe],
   templateUrl: './input-add-item.component.html',
   styleUrl: './input-add-item.component.scss'
 })
 export class InputAddItemComponent {
   #cdr = inject(ChangeDetectorRef);
 
-  @ViewChild("inputText") public inputText!: ElementRef;
+  @ViewChild('inputText') public inputText!: ElementRef;
 
-  @Output() public outPutAddListItems = new EventEmitter<IListItems>()
+  @Input({ required: true }) public inputListItems: IListItems[] = [];
+
+  @Output() public outputAddListItem = new EventEmitter<IListItems>();
   public focusAndAddItem(value: string) {
     if (value) {
-      this.#cdr.detectChanges
-      this.inputText.nativeElement.value = ''; // limpa o input
+      this.#cdr.detectChanges();
+      this.inputText.nativeElement.value = '';
 
       const currentDate = new Date();
-      const timesTamp = currentDate.getTime();
-      const id = `ID ${timesTamp}`; // isso aqui é só pra criar um id qualquer
+      const timestamp = currentDate.getTime();
+      const id = `ID ${timestamp}`; // isso aqui é só pra criar um id qualquer
 
-      this.outPutAddListItems.emit({
+      this.outputAddListItem.emit({
         id,
         checked: false,
-        value
-      })
+        value,
+      });
+
       return this.inputText.nativeElement.focus();
     }
   }

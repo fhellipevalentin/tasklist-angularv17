@@ -1,5 +1,6 @@
 <div>
-  <label class="input-label-text" for="inputValue">
+  <label class="input-label-text"
+  for="inputValue">
     <input
     type="text"
     (keyup.enter)="focusAndAddItem(inputText.value)"
@@ -16,3 +17,5 @@
     </button>
   </label>
 </div>
+
+<p>{{ inputListItems | json }}</p>
