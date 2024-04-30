@@ -30,12 +30,6 @@ export class InputAddItemComponent {
         checked: false,
         value
       })
-
-      console.log({
-        id,
-        checked: false,
-        value
-      });
       return this.inputText.nativeElement.focus();
     }
   }
