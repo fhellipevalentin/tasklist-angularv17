@@ -4,7 +4,7 @@
   alt="Sua Lista está vazia- imagem ilustrativa"
   loading="eager">
 
-  @if(addItem()){
+  @if(addItem()) {
     <button class="btn btn-primary" (click)="addItem.set(false)">
       Crie uma lista de tarefas
     </button>
@@ -20,8 +20,6 @@
   [inputListItems]="getListItems()"
   (outputAddListItem)="getInputAndAddItem($event)"
 />
-}
-
 <main class="container">
   @if(listItemsStage('pending').length) {
   <h2>Pendências</h2>
@@ -29,7 +27,7 @@
   [inputListItems]="listItemsStage('pending')"
   (outputUpdateItemCheckbox)="updateItemCheckbox($event)"
   (outputUpdateItemText)="updateItemText($event)"
-  (outputDeleteItemText)="deleteItemText($event)"
+  (outputDeleteItem)="deleteItem($event)"
   />
   }
 
@@ -39,7 +37,7 @@
   [inputListItems]="listItemsStage('completed')"
   (outputUpdateItemCheckbox)="updateItemCheckbox($event)"
   (outputUpdateItemText)="updateItemText($event)"
-  (outputDeleteItemText)="deleteItemText($event)"
+  (outputDeleteItem)="deleteItem($event)"
   />
   }
 </main>
@@ -47,3 +45,5 @@
 <footer>
   <button class="btn btn-danger" (click)="deleteAllItems()">Deletar todos os Itens</button>
 </footer>
+
+}
